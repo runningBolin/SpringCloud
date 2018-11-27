@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
-@FeignClient(value="eureka-client")//声明调用服务
+@FeignClient(value="eureka-client",fallback=HiServiceHystric.class)//声明调用服务
 public interface HiService {
-
+	
 	@RequestMapping(method=RequestMethod.GET, value="/hi")
 	String sayHi(@RequestParam String name);
 }
